@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import PhoneAddictionQuiz from "./PhoneAddictionQuiz";
+import RealWorldCaseStudies from "./RealWorldCaseStudies";
 import { 
   Smartphone, 
   Heart, 
@@ -258,6 +259,10 @@ const CellphoneGuide = () => {
           <PhoneAddictionQuiz />
         </div>
       </section>
+
+      
+      {/* Real World Case Studies */}
+      <RealWorldCaseStudies />
 
       {/* Call to Action */}
       <section className="py-16 bg-gradient-to-r from-primary to-accent text-primary-foreground">
