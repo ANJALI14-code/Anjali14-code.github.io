@@ -107,7 +107,7 @@ const CellphoneGuide = () => {
             <div className="space-y-6">
               <Badge className="bg-accent text-accent-foreground">Digital Wellness Guide</Badge>
               <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                Mindful Device Guide
+                Your Phone: Friend or Foe?
               </h1>
               <p className="text-lg md:text-xl opacity-90 leading-relaxed">
                 Learn how to harness the power of your cellphone while maintaining healthy digital habits and avoiding common pitfalls.
