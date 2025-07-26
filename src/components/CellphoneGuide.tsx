@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import PhoneAddictionQuiz from "./PhoneAddictionQuiz";
@@ -20,6 +21,7 @@ import {
 import heroImage from "@/assets/cellphone-hero.jpg";
 
 const CellphoneGuide = () => {
+  const [expandedBenefit, setExpandedBenefit] = useState<number | null>(null);
   const benefits = [
     {
       icon: <Users className="w-6 h-6" />,
@@ -138,23 +140,47 @@ const CellphoneGuide = () => {
           
           <div className="grid md:grid-cols-2 gap-6">
             {benefits.map((benefit, index) => (
-              <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-0 bg-gradient-to-br from-card to-muted/30">
+              <Card 
+                key={index} 
+                className={`group cursor-pointer transition-all duration-500 border-0 bg-gradient-to-br from-card to-muted/30 hover:shadow-xl ${
+                  expandedBenefit === index 
+                    ? 'scale-105 shadow-2xl ring-2 ring-primary/50 animate-scale-in' 
+                    : 'hover:scale-102'
+                }`}
+                onClick={() => setExpandedBenefit(expandedBenefit === index ? null : index)}
+              >
                 <CardHeader>
                   <div className="flex items-center space-x-3 mb-2">
-                    <div className="p-2 rounded-lg bg-success/10 text-success group-hover:scale-110 transition-transform">
+                    <div className={`p-2 rounded-lg bg-success/10 text-success transition-all duration-300 ${
+                      expandedBenefit === index ? 'scale-125' : 'group-hover:scale-110'
+                    }`}>
                       {benefit.icon}
                     </div>
-                    <CardTitle className="text-xl">{benefit.title}</CardTitle>
+                    <CardTitle className={`transition-all duration-300 ${
+                      expandedBenefit === index ? 'text-2xl font-extrabold text-primary' : 'text-xl'
+                    }`}>
+                      {benefit.title}
+                    </CardTitle>
                   </div>
-                  <CardDescription className="text-base">
+                  <CardDescription className={`transition-all duration-300 ${
+                    expandedBenefit === index ? 'text-lg font-semibold text-foreground' : 'text-base'
+                  }`}>
                     {benefit.description}
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className={`transition-all duration-300 ${
+                  expandedBenefit === index ? 'animate-fade-in' : ''
+                }`}>
                   <ul className="space-y-2">
                     {benefit.examples.map((example, idx) => (
-                      <li key={idx} className="flex items-center space-x-2 text-sm text-muted-foreground">
-                        <div className="w-1.5 h-1.5 rounded-full bg-success"></div>
+                      <li key={idx} className={`flex items-center space-x-2 transition-all duration-300 ${
+                        expandedBenefit === index 
+                          ? 'text-base font-medium text-foreground' 
+                          : 'text-sm text-muted-foreground'
+                      }`}>
+                        <div className={`rounded-full bg-success transition-all duration-300 ${
+                          expandedBenefit === index ? 'w-2 h-2' : 'w-1.5 h-1.5'
+                        }`}></div>
                         <span>{example}</span>
                       </li>
                     ))}
