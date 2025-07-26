@@ -22,6 +22,7 @@ import heroImage from "@/assets/cellphone-hero.jpg";
 
 const CellphoneGuide = () => {
   const [expandedBenefit, setExpandedBenefit] = useState<number | null>(null);
+  const [expandedMisuse, setExpandedMisuse] = useState<number | null>(null);
   const benefits = [
     {
       icon: <Users className="w-6 h-6" />,
@@ -206,23 +207,47 @@ const CellphoneGuide = () => {
           
           <div className="grid md:grid-cols-2 gap-6">
             {misuses.map((misuse, index) => (
-              <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-0 bg-gradient-to-br from-card to-warning/5">
+              <Card 
+                key={index} 
+                className={`group cursor-pointer transition-all duration-500 border-0 bg-gradient-to-br from-card to-warning/5 hover:shadow-xl ${
+                  expandedMisuse === index 
+                    ? 'scale-105 shadow-2xl ring-2 ring-warning/50 animate-scale-in' 
+                    : 'hover:scale-102'
+                }`}
+                onClick={() => setExpandedMisuse(expandedMisuse === index ? null : index)}
+              >
                 <CardHeader>
                   <div className="flex items-center space-x-3 mb-2">
-                    <div className="p-2 rounded-lg bg-warning/10 text-warning group-hover:scale-110 transition-transform">
+                    <div className={`p-2 rounded-lg bg-warning/10 text-warning transition-all duration-300 ${
+                      expandedMisuse === index ? 'scale-125' : 'group-hover:scale-110'
+                    }`}>
                       {misuse.icon}
                     </div>
-                    <CardTitle className="text-xl">{misuse.title}</CardTitle>
+                    <CardTitle className={`transition-all duration-300 ${
+                      expandedMisuse === index ? 'text-2xl font-extrabold text-warning' : 'text-xl'
+                    }`}>
+                      {misuse.title}
+                    </CardTitle>
                   </div>
-                  <CardDescription className="text-base">
+                  <CardDescription className={`transition-all duration-300 ${
+                    expandedMisuse === index ? 'text-lg font-semibold text-foreground' : 'text-base'
+                  }`}>
                     {misuse.description}
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className={`transition-all duration-300 ${
+                  expandedMisuse === index ? 'animate-fade-in' : ''
+                }`}>
                   <ul className="space-y-2">
                     {misuse.impacts.map((impact, idx) => (
-                      <li key={idx} className="flex items-center space-x-2 text-sm text-muted-foreground">
-                        <AlertTriangle className="w-3 h-3 text-warning" />
+                      <li key={idx} className={`flex items-center space-x-2 transition-all duration-300 ${
+                        expandedMisuse === index 
+                          ? 'text-base font-medium text-foreground' 
+                          : 'text-sm text-muted-foreground'
+                      }`}>
+                        <AlertTriangle className={`text-warning transition-all duration-300 ${
+                          expandedMisuse === index ? 'w-4 h-4' : 'w-3 h-3'
+                        }`} />
                         <span>{impact}</span>
                       </li>
                     ))}
