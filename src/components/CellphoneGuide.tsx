@@ -258,6 +258,26 @@ const CellphoneGuide = () => {
           </div>
         </div>
       </section>
+      
+      {/* Phone Addiction Quiz Section */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Are You Addicted to Your Phone?
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-2">
+              Take this quick quiz to assess your relationship with your phone and find out if you might be addicted
+            </p>
+            <Badge className="bg-primary/10 text-primary px-3 py-1">
+              <ClipboardList className="w-4 h-4 mr-2" />
+              8 Questions
+            </Badge>
+          </div>
+          
+          <PhoneAddictionQuiz />
+        </div>
+      </section>
 
       {/* Healthy Usage Tips */}
       <section className="py-16 bg-background">
@@ -287,27 +307,6 @@ const CellphoneGuide = () => {
               </Card>
             ))}
           </div>
-        </div>
-      </section>
-
-      
-      {/* Phone Addiction Quiz Section */}
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Phone Addiction Assessment
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-2">
-              Take this quick quiz to assess your relationship with your phone
-            </p>
-            <Badge className="bg-primary/10 text-primary px-3 py-1">
-              <ClipboardList className="w-4 h-4 mr-2" />
-              8 Questions
-            </Badge>
-          </div>
-          
-          <PhoneAddictionQuiz />
         </div>
       </section>
 
