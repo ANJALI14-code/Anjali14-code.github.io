@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { TrendingUp, TrendingDown, DollarSign, Trophy, AlertTriangle, ExternalLink } from "lucide-react";
 import successImage from "@/assets/success-story.jpg";
 import addictionImage from "@/assets/addiction-story.jpg";
-
 const RealWorldCaseStudies = () => {
   const successStory = {
     title: "The Teen Who Built a Million-Dollar App",
@@ -12,36 +11,21 @@ const RealWorldCaseStudies = () => {
     age: "18 years old",
     achievement: "$30 Million Revenue Projected",
     story: "While his peers were scrolling endlessly on social media, Long Island teenager Zach Yadegari used his smartphone as a tool for success. He taught himself coding and built Cal AI, an AI-powered calorie tracking app that has been downloaded over 1 million times.",
-    details: [
-      "Maintained a 4.0 GPA while building his app",
-      "App generates over $1 million monthly revenue", 
-      "Used phone for learning coding through online tutorials",
-      "Leveraged social media for marketing and user feedback",
-      "Turned down multiple acquisition offers to focus on growth"
-    ],
+    details: ["Maintained a 4.0 GPA while building his app", "App generates over $1 million monthly revenue", "Used phone for learning coding through online tutorials", "Leveraged social media for marketing and user feedback", "Turned down multiple acquisition offers to focus on growth"],
     lesson: "Strategic use of technology for learning and creation can lead to extraordinary success.",
     source: "CBS News, TechCrunch, Fox 5 NY (2024)"
   };
-
   const cautionaryStory = {
     title: "The $25,000 TikTok Inheritance Loss",
     person: "Cindi White",
-    age: "65 years old", 
+    age: "65 years old",
     loss: "$25,000+ Lost",
     story: "After retiring, Cindi White discovered TikTok and became addicted to sending virtual gifts to livestreamers. What started as innocent entertainment escalated into compulsive spending that consumed most of her inheritance.",
-    details: [
-      "Spent over $25,000 on TikTok virtual gifts in one year",
-      "Lost most of her retirement inheritance", 
-      "Developed parasocial relationships with streamers",
-      "Spent up to 8 hours daily on the platform",
-      "Sought companionship through digital interactions"
-    ],
+    details: ["Spent over $25,000 on TikTok virtual gifts in one year", "Lost most of her retirement inheritance", "Developed parasocial relationships with streamers", "Spent up to 8 hours daily on the platform", "Sought companionship through digital interactions"],
     lesson: "Uncontrolled social media use can lead to severe financial and emotional consequences.",
     source: "Business Insider Investigation (2023)"
   };
-
-  return (
-    <section className="py-16 bg-gradient-to-br from-muted/30 to-background">
+  return <section className="py-16 bg-gradient-to-br from-muted/30 to-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -59,11 +43,7 @@ const RealWorldCaseStudies = () => {
           {/* Success Story */}
           <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-success/5 to-card overflow-hidden">
             <div className="relative">
-              <img 
-                src={successImage}
-                alt="Young entrepreneur with smartphone showing success"
-                className="w-full h-48 object-cover"
-              />
+              <img src={successImage} alt="Young entrepreneur with smartphone showing success" className="w-full h-48 object-cover" />
               <div className="absolute top-4 left-4">
                 <Badge className="bg-success text-success-foreground">
                   <Trophy className="w-4 h-4 mr-1" />
@@ -95,12 +75,10 @@ const RealWorldCaseStudies = () => {
               <div>
                 <h4 className="font-semibold text-sm mb-2">Key Success Factors:</h4>
                 <ul className="space-y-1">
-                  {successStory.details.map((detail, index) => (
-                    <li key={index} className="flex items-start space-x-2 text-sm">
+                  {successStory.details.map((detail, index) => <li key={index} className="flex items-start space-x-2 text-sm">
                       <div className="w-1.5 h-1.5 rounded-full bg-success mt-2"></div>
                       <span className="text-muted-foreground">{detail}</span>
-                    </li>
-                  ))}
+                    </li>)}
                 </ul>
               </div>
               
@@ -122,11 +100,7 @@ const RealWorldCaseStudies = () => {
           {/* Cautionary Story */}
           <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-warning/5 to-card overflow-hidden">
             <div className="relative">
-              <img 
-                src={addictionImage}
-                alt="Person struggling with phone addiction and financial loss"
-                className="w-full h-48 object-cover"
-              />
+              <img src={addictionImage} alt="Person struggling with phone addiction and financial loss" className="w-full h-48 object-cover" />
               <div className="absolute top-4 left-4">
                 <Badge className="bg-warning text-warning-foreground">
                   <AlertTriangle className="w-4 h-4 mr-1" />
@@ -158,12 +132,10 @@ const RealWorldCaseStudies = () => {
               <div>
                 <h4 className="font-semibold text-sm mb-2">Warning Signs Observed:</h4>
                 <ul className="space-y-1">
-                  {cautionaryStory.details.map((detail, index) => (
-                    <li key={index} className="flex items-start space-x-2 text-sm">
+                  {cautionaryStory.details.map((detail, index) => <li key={index} className="flex items-start space-x-2 text-sm">
                       <AlertTriangle className="w-3 h-3 text-warning mt-1" />
                       <span className="text-muted-foreground">{detail}</span>
-                    </li>
-                  ))}
+                    </li>)}
                 </ul>
               </div>
               
@@ -191,15 +163,10 @@ const RealWorldCaseStudies = () => {
               These real stories show that the same device can create millionaires or destroy finances. 
               The difference lies in how mindfully you use it.
             </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              <Badge className="bg-success/10 text-success">Strategic Usage = Success</Badge>
-              <Badge className="bg-warning/10 text-warning">Mindless Usage = Problems</Badge>
-            </div>
+            
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default RealWorldCaseStudies;
