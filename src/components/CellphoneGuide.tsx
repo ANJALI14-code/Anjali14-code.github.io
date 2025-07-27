@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import PhoneAddictionQuiz from "./PhoneAddictionQuiz";
 import RealWorldCaseStudies from "./RealWorldCaseStudies";
 import { 
@@ -23,6 +24,7 @@ import heroImage from "@/assets/cellphone-hero.jpg";
 const CellphoneGuide = () => {
   const [expandedBenefit, setExpandedBenefit] = useState<number | null>(null);
   const [expandedMisuse, setExpandedMisuse] = useState<number | null>(null);
+  const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
   const benefits = [
     {
       icon: <Users className="w-6 h-6" />,
@@ -99,6 +101,21 @@ const CellphoneGuide = () => {
       tip: "Use parental controls and content filters for younger users"
     }
   ];
+
+  const topicInfo = {
+    "digital-wellness": {
+      title: "Digital Wellness",
+      content: "Digital wellness involves creating a healthy, balanced relationship with technology. It means being intentional about how, when, and why you use digital devices. This includes setting boundaries, practicing mindful consumption of digital content, and ensuring technology enhances rather than detracts from your overall well-being and life goals."
+    },
+    "mindful-usage": {
+      title: "Mindful Usage", 
+      content: "Mindful usage means being conscious and deliberate about your phone interactions. It involves paying attention to why you're reaching for your device, how you feel during and after use, and whether your usage aligns with your intentions. Practice presence by putting your phone away during conversations and important activities."
+    },
+    "healthy-habits": {
+      title: "Healthy Habits",
+      content: "Healthy phone habits include creating phone-free zones and times, using app timers and restrictions, practicing regular digital detoxes, and prioritizing face-to-face interactions. Establish morning and evening routines that don't revolve around your phone, and be mindful of posture and eye strain during extended use."
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -323,20 +340,58 @@ const CellphoneGuide = () => {
           <p className="text-lg opacity-90 max-w-2xl mx-auto mb-8">
             Remember, the goal isn't to eliminate technology, but to use it intentionally and mindfully to enhance your life and well-being.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Badge className="bg-accent text-accent-foreground px-4 py-2 text-base">
+          <div className="flex flex-wrap justify-center gap-4 mb-8">
+            <Button 
+              onClick={() => setSelectedTopic(selectedTopic === "digital-wellness" ? null : "digital-wellness")}
+              className={`px-4 py-2 text-base transition-all duration-300 ${
+                selectedTopic === "digital-wellness" 
+                  ? "bg-accent text-accent-foreground scale-105" 
+                  : "bg-accent/80 text-accent-foreground hover:bg-accent"
+              }`}
+            >
               <Smartphone className="w-4 h-4 mr-2" />
               Digital Wellness
-            </Badge>
-            <Badge className="bg-success text-success-foreground px-4 py-2 text-base">
+            </Button>
+            <Button 
+              onClick={() => setSelectedTopic(selectedTopic === "mindful-usage" ? null : "mindful-usage")}
+              className={`px-4 py-2 text-base transition-all duration-300 ${
+                selectedTopic === "mindful-usage" 
+                  ? "bg-success text-success-foreground scale-105" 
+                  : "bg-success/80 text-success-foreground hover:bg-success"
+              }`}
+            >
               <Heart className="w-4 h-4 mr-2" />
               Mindful Usage
-            </Badge>
-            <Badge className="bg-warning text-warning-foreground px-4 py-2 text-base">
+            </Button>
+            <Button 
+              onClick={() => setSelectedTopic(selectedTopic === "healthy-habits" ? null : "healthy-habits")}
+              className={`px-4 py-2 text-base transition-all duration-300 ${
+                selectedTopic === "healthy-habits" 
+                  ? "bg-warning text-warning-foreground scale-105" 
+                  : "bg-warning/80 text-warning-foreground hover:bg-warning"
+              }`}
+            >
               <Shield className="w-4 h-4 mr-2" />
               Healthy Habits
-            </Badge>
+            </Button>
           </div>
+
+          {/* Info Block */}
+          {selectedTopic && (
+            <div className="max-w-2xl mx-auto animate-fade-in">
+              <Card className="bg-white/10 border-white/20 text-primary-foreground">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-semibold mb-4 flex items-center">
+                    <div className="w-2 h-2 rounded-full bg-current mr-3"></div>
+                    {topicInfo[selectedTopic as keyof typeof topicInfo].title}
+                  </h3>
+                  <p className="leading-relaxed text-sm opacity-90">
+                    {topicInfo[selectedTopic as keyof typeof topicInfo].content}
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          )}
         </div>
       </section>
     </div>
