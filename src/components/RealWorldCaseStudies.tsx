@@ -34,9 +34,7 @@ const RealWorldCaseStudies = () => {
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Actual news stories showing how phone usage can dramatically change lives - for better or worse
           </p>
-          <Badge className="mt-4 bg-primary/10 text-primary px-4 py-2">
-            Verified News Sources
-          </Badge>
+          
         </div>
         
         <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
