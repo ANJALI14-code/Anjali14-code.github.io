@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import PhoneAddictionQuiz from "./PhoneAddictionQuiz";
 import RealWorldCaseStudies from "./RealWorldCaseStudies";
+import Navigation from "./Navigation";
 import { 
   Smartphone, 
   Heart, 
@@ -25,6 +26,24 @@ const CellphoneGuide = () => {
   const [expandedBenefit, setExpandedBenefit] = useState<number | null>(null);
   const [expandedMisuse, setExpandedMisuse] = useState<number | null>(null);
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
+  
+  const heroRef = useRef<HTMLDivElement>(null);
+  const quizRef = useRef<HTMLDivElement>(null);
+  const caseStudiesRef = useRef<HTMLDivElement>(null);
+
+  const handleNavigation = (section: string) => {
+    switch (section) {
+      case "home":
+        heroRef.current?.scrollIntoView({ behavior: "smooth" });
+        break;
+      case "quiz":
+        quizRef.current?.scrollIntoView({ behavior: "smooth" });
+        break;
+      case "case-studies":
+        caseStudiesRef.current?.scrollIntoView({ behavior: "smooth" });
+        break;
+    }
+  };
   const benefits = [
     {
       icon: <Users className="w-6 h-6" />,
@@ -119,8 +138,10 @@ const CellphoneGuide = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Navigation onNavigate={handleNavigation} />
+      
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-primary to-accent text-primary-foreground">
+      <div ref={heroRef} className="relative bg-gradient-to-br from-primary to-accent text-primary-foreground">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative container mx-auto px-4 py-16 md:py-24">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -277,7 +298,7 @@ const CellphoneGuide = () => {
       </section>
       
       {/* Phone Addiction Quiz Section */}
-      <section className="py-16 bg-muted/30">
+      <section ref={quizRef} className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -329,7 +350,9 @@ const CellphoneGuide = () => {
 
       
       {/* Real World Case Studies */}
-      <RealWorldCaseStudies />
+      <div ref={caseStudiesRef}>
+        <RealWorldCaseStudies />
+      </div>
 
       {/* Call to Action */}
       <section className="py-16 bg-gradient-to-r from-primary to-accent text-primary-foreground">
